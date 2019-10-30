@@ -1,0 +1,40 @@
+{
+  "name": "frontcamp",
+  "version": "1.0.0",
+  "description": "Task 1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelanaralik/FrontCamp-Mentoring-Program-BY-Q4-2019.git"
+  },
+  "author": "Anaralik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pavelanaralik/FrontCamp-Mentoring-Program-BY-Q4-2019/issues"
+  },
+  "homepage": "https://github.com/pavelanaralik/FrontCamp-Mentoring-Program-BY-Q4-2019#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "autoprefixer": "^9.7.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-md5-hash": "0.0.6"
+  }
+}
