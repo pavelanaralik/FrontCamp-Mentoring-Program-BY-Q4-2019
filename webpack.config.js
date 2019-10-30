@@ -1,5 +1,5 @@
 // Webpack v4
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
@@ -22,15 +22,19 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader' ]
+                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             }
         ]
+    },
+    devServer: {
+        inline: true,
+        port: 9100
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css',
-          }),
+        }),
         new HtmlWebpackPlugin({
             inject: false,
             hash: true,
