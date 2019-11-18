@@ -6,12 +6,12 @@ export class NewsService {
         this.service = new HttpService();
     }
 
-    getChannels() {
-        return this.service.get(HOST_URL + 'sources');
+    async getChannels() {
+        return await this.service.get(`${HOST_URL}sources`);
     }
 
-    getNews(channel = "breitbart-news") {
-        const URL = HOST_URL + 'articles?source=' + channel + '&apiKey=' + API_KEY;
-        return this.service.get(URL);
+    async getNews(channel = 'breitbart-news') {
+        const URL = `${HOST_URL}articles?source=${channel}&apiKey=${API_KEY}`;
+        return await this.service.get(URL);
     }
 }
