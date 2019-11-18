@@ -1,3 +1,5 @@
 import "./scss/main.scss";
-console.log("hello, world");
-alert("!!!!!!!!!!!!!!!!");
+import { NewsController } from './js/controllers';
+
+NewsController();
+

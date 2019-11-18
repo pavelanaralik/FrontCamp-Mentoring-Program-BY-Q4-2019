@@ -1,9 +1,31 @@
+  
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>TASK_1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rokkitt|Orbitron">
   </head>
-  <body>
-    <div>Hello, world!</div>
-    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+  <body>   
+      <div class="wrapper"> 
+        <select class="item-source" id="channels">
+        </select>
+        <div id="container">
+          <table id="news">
+              <caption><h1 class="main-title">News:</h1></caption>
+              <tbody></tbody>
+            </table> 
+        </div>   
+      </div>
+        <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   </body>
+  <footer>
+      <div class="wrapper">
+        <p class="attribution-link">
+          <a href="https://newsapi.org">News API</a>.
+        </p>
+      </div>
+    </footer>
 </html>
