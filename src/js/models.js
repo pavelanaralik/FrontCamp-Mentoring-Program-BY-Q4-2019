@@ -1,7 +1,7 @@
 import { HttpMethodFactory } from './http.service';
 import { API_KEY, HOST_URL } from './constant';
 
-export class NewsService {
+export class NewsModel {
     constructor() {
         this.service = new HttpMethodFactory();
     }

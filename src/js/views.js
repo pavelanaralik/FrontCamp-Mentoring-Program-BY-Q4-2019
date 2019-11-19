@@ -1,13 +1,23 @@
+import { handleError } from './handleError.js'
+
 export class NewsView {
-    constructor(service) {
-        this.service = service;
-        this.setChanells();
-        this.setNews();
+    constructor(model) {
+        this.model = model;
+        const selectElement = document.querySelector("#channels");
+        selectElement.addEventListener('change', async ({target: {value}}) => {
+            try {
+                const list = await this.model.getNews(value);
+                this.render(list); 
+
+            } catch (err) {
+                this.showError(err);
+            }
+        });
     }
 
     async setChanells() {
         try {
-            const list = await this.service.getChannels();
+            const list = await this.model.getChannels();
             this.renderChannels(list);
         } catch (err) {
             this.showError(err);
@@ -23,18 +33,18 @@ export class NewsView {
         }
     }
 
-    async setNews() {
-        const selectElement = document.querySelector("#channels");
-        selectElement.addEventListener('change', async ({target: {value}}) => {
-            try {
-                const list = await this.service.getNews(value);
-                this.render(list); 
+    //  async setNews() {
+    //     const selectElement = document.querySelector("#channels");
+    //     selectElement.addEventListener('change', async ({target: {value}}) => {
+    //         try {
+    //             const list = await this.model.getNews(value);
+    //             this.render(list); 
 
-            } catch (err) {
-                this.showError(err);
-            }
-        });
-    }
+    //         } catch (err) {
+    //             this.showError(err);
+    //         }
+    //     });
+    // }
 
     render(list) {
         let news = document.getElementById('news');
@@ -70,5 +80,6 @@ export class NewsView {
 
     showError(err) {
         console.log(err);
+        handleError(err);
     }
 }

@@ -1,7 +1,10 @@
 import { NewsView } from './views';
-import { NewsService } from './news.service';
+import { NewsModel } from './models';
 
-export function NewsController() {
-    var newsService = new NewsService();
-    new NewsView(newsService);
+export async function newsController() {
+    var newsModel = new NewsModel();
+    var newsView = new NewsView(newsModel);
+
+    await newsView.setChanells();
 };
+

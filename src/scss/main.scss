@@ -20,6 +20,13 @@
   flex-wrap: wrap;
   margin: 0 auto;
 }
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .item {
   flex-grow: 1;
   flex-shrink: 1;

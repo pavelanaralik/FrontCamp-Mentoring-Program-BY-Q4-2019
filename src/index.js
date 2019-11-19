@@ -1,5 +1,5 @@
 import "./scss/main.scss";
-import { NewsController } from './js/controllers';
+import { newsController } from './js/controllers';
 
-NewsController();
+newsController();
 
