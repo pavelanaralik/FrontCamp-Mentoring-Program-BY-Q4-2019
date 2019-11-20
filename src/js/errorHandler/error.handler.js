@@ -1,8 +1,7 @@
 import { ErrorPopup } from './errorPopup.view'
-import {getClassAsync} from '../common/loader'
+import { getClassAsync } from '../common/loader'
 
 export async function handleError(errorMessage) {
-    console.log("Error");
     const ErrorHandler = await getClassAsync('ErrorHandler');
     var errorHandler = ErrorHandler.getInstance();
     errorHandler.showError(errorMessage);
@@ -11,7 +10,7 @@ export async function handleError(errorMessage) {
 /**
  *Singleton implementation
  */
-export default class ErrorHandler{
+export default class ErrorHandler {
     constructor() {
         if (typeof ErrorHandler.instance === 'object') {
             return ErrorHandler.instance;
@@ -24,7 +23,7 @@ export default class ErrorHandler{
     static getInstance() {
         return new ErrorHandler();
     }
-    
+
     showError(message) {
         this._errorPopup.message = message;
         this._errorPopup.show();

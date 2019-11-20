@@ -22,13 +22,12 @@ export class HttpMethodFactory {
     }
 
     async get(url) {
-        logger('GET', url);
+        // logger('GET', url);
         const response = await fetch(url)
         return await response.json()
     }
 
     async put(url, body) {
-        logger('PUT', url);
         const response = fetch(url, {
             method: 'PUT',
             headers: {
@@ -40,7 +39,6 @@ export class HttpMethodFactory {
     }
 
     async post(url, body) {
-        logger('POST', url);
         const response = fetch(url, {
             method: 'POST',
             headers: {
@@ -52,6 +50,6 @@ export class HttpMethodFactory {
     }
 }
 
-export function logger(method, url){
-    console.log(`${method}: url: ${url}`); 
-}
+// export function logger(method, url){
+//     console.log(`${method}: url: ${url}`); 
+// }

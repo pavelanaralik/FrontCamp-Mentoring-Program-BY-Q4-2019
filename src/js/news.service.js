@@ -3,7 +3,19 @@ import { API_KEY, HOST_URL } from './constant';
 
 export class NewsService {
     constructor() {
-        this.service = new HttpMethodFactory();
+        //Proxy
+        this.service = new Proxy(new HttpMethodFactory(), {
+            get(target, key) {
+                const propertyValue = target[key];
+                if (typeof propertyValue !== 'function') {
+                    return propertyValue;
+                }
+                return function (...args) {
+                    logger(`${key}: ${JSON.stringify(args)}`);
+                    return propertyValue.apply(target, args);
+                };
+            }
+        })
     }
 
     async getChannels() {
@@ -14,4 +26,8 @@ export class NewsService {
         const URL = `${HOST_URL}articles?source=${channel}&apiKey=${API_KEY}`;
         return await this.service.send(URL, 'get');
     }
+}
+
+export function logger(message) {
+    console.log(message);
 }
