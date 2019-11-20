@@ -1,7 +1,7 @@
 export function getClassAsync(name) {
     switch (name) {
-      case 'ErrorController':
-        return import('../errorHandler/error.controller').then(({ default: ErrorController }) => ErrorController);
+      case 'ErrorHandler':
+        return import('../errorHandler/error.handler').then(({ default: ErrorHandler }) => ErrorHandler);
       default:
         break;
     }
