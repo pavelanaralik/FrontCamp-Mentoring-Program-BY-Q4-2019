@@ -1,3 +1,15 @@
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: 479px) { @content; }
+  }
+  @else if $media == wide-handhelds {
+    @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (min-width: 768px) and (max-width: 980px) { @content; }
+  }
+}
+
 .attribution-link {
   position: relative;
   top:0;
@@ -6,8 +18,12 @@
   font-family: 'Orbitron', sans-serif;
 }
 .wrapper {
-  width: 980px;
+  width: 70%;
   margin: 0 auto;
+
+    @include respond-to(handhelds) { width: 100%; };
+    @include respond-to(wide-handhelds) {width: 100%; };
+    @include respond-to(tablets) { width: 90% };
 }
 .main-title {
   font-size: 80px;
@@ -19,6 +35,13 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+}
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .item {
   flex-grow: 1;

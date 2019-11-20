@@ -38,5 +38,8 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
     "webpack-md5-hash": "0.0.6"
+  },
+  "dependencies": {
+    "redux": "^4.0.4"
   }
 }
