@@ -73,6 +73,8 @@
 }
 .item-source {
   font-family: 'Orbitron', sans-serif;
+  @include respond-to(handhelds) { font-size: 5px; };
+  @include respond-to(wide-handhelds) {font-size: 8px; };
 }
 .item-date {
   font-family: 'Rokkitt', serif;
