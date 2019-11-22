@@ -1,55 +1,36 @@
 /**
  *Factory implementation
  */
-export class HttpMethodFactory {
-    async send(url, type, body) {
-        let response;
-        switch (type) {
-            case 'get':
-                response = await this.get(url);
-                break;
-            case 'put':
-                response = await this.put(url, body);
-                break;
-            case 'post':
-                response = await this.post(url, body);
-                break;
-            default:
-                console.log(`${type} method does not exist`); 
-                break;
-        }
-        return response;
-    }
+export function creator(method) {
+    switch (method) {
+        case 'get':
+            return new HttpGet();
+        case 'put':
+            return new HttpPut();
+        case 'post':
+            return new HttpPost();
+        default:
+            throw new Exception(`${type} method does not exist`);
 
-    async get(url) {
-        // logger('GET', url);
+    }
+}
+export class HttpGet {
+    async execute(url) {
         const response = await fetch(url)
-        return await response.json()
-    }
-
-    async put(url, body) {
-        const response = fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
-        return await response.json()
-    }
-
-    async post(url, body) {
-        const response = fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
         return await response.json()
     }
 }
 
-// export function logger(method, url){
-//     console.log(`${method}: url: ${url}`); 
-// }
+export class HttpPut {
+    async execute(url) {
+        const response = await fetch(url)
+        return await response.json()
+    }
+}
+
+export class HttpPost {
+    async execute(url) {
+        const response = await fetch(url)
+        return await response.json()
+    }
+}

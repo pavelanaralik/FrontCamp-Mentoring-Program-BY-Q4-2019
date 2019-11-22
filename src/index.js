@@ -44,9 +44,9 @@ const _init = async () => {
 }
 
 /*render UI*/
-const update = () => {
-    channelsRender.render(store);
-    newsRender.render(store);
+const update = (state) => {
+    channelsRender.render(state);
+    newsRender.render(state);
 };
 
 _init();

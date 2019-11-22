@@ -1,5 +1,4 @@
-function render(store) {
-    let state = store.getState();
+function render(state) {
     if(!state.sources) 
         return;
     for (const item of state.sources) {
