@@ -1,10 +1,10 @@
-import { HttpMethodFactory } from './http.service';
+import { creator } from './http.service';
 import { API_KEY, HOST_URL } from './constant';
 
 export class NewsService {
     constructor() {
         //Proxy
-        this.service = new Proxy(new HttpMethodFactory(), {
+        this.service = new Proxy(creator('get'), {
             get(target, key) {
                 const propertyValue = target[key];
                 if (typeof propertyValue !== 'function') {
@@ -19,12 +19,12 @@ export class NewsService {
     }
 
     async getChannels() {
-        return await this.service.send(`${HOST_URL}sources`, 'get');
+        return await this.service.execute(`${HOST_URL}sources`);
     }
 
     async getNews(channel = 'breitbart-news') {
         const URL = `${HOST_URL}articles?source=${channel}&apiKey=${API_KEY}`;
-        return await this.service.send(URL, 'get');
+        return await this.service.execute(URL);
     }
 }
 

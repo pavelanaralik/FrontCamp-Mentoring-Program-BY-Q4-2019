@@ -1,5 +1,4 @@
-function render(store) {
-    let state = store.getState();
+function render(state) {
     if(!state.articles) 
         return;
     let news = document.getElementById('news');

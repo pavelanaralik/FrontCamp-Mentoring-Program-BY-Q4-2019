@@ -3,32 +3,34 @@ const createStore = (reducer) => {
     let listeners = [];
 
     const getState = () => {
-      return state
+        return state
     };
 
     const subscribe = (listener) => {
         listeners.push(listener)
         return () => {
-          listeners = listeners.filter(l => l !== listener)
+            listeners = listeners.filter(l => l !== listener)
         }
-      };
-
-    const dispatch = (action) => {
-      if(typeof action === 'function'){
-        action(dispatch, getState);
-        return;
-      }
-      state = reducer(state, action);
-      listeners.forEach(listener => listener());
     };
 
-    dispatch ({});
+    const dispatch = (action) => {
+        if (typeof action === 'function') {
+            action(dispatch, getState);
+            return;
+        }
+        state = reducer(state, action);
+        for (const iterator of listeners) {
+            iterator(state);
+        }
+    };
 
-    return {getState, dispatch, subscribe};
-  };
-  
-const bindActionCreators = (creator, dispatch) => (...args) =>{
+    dispatch({});
+
+    return { getState, dispatch, subscribe };
+};
+
+const bindActionCreators = (creator, dispatch) => (...args) => {
     dispatch(creator(...args));
 }
 
-export {createStore, bindActionCreators}
+export { createStore, bindActionCreators }
